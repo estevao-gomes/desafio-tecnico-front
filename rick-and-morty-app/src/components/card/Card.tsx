@@ -1,16 +1,18 @@
 import Image from 'next/image'
+import Link from 'next/link';
 
 import styles from './Card.module.css'
 
-interface CardProps{
+interface cardProps{
     name: string;
-    imgUrl: string
+    imgUrl: string;
+    id: number
 }
 
-export function Card({name, imgUrl}:CardProps){
+export function Card({name, imgUrl, id}:cardProps){
     return(
         <div>
-            <span>{name}</span>    
+            <Link href={`/character/${id}`}>{name}</Link>    
         </div>
     )
 }
