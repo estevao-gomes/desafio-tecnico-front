@@ -6,4 +6,9 @@
     border-color: black;
 
     min-height: 100vh;
+
+    display:flex;
   }
+.menuHidden{
+  display:none;
+}
