@@ -1,5 +1,6 @@
 import { Menu } from "@/components/menu/Menu";
 import { Navbar } from "@/components/navbar/Navbar";
+import { CharacterContext } from "@/contexts/characterContext";
 
 
 import "./globals.css";
@@ -21,7 +22,11 @@ export default function RootLayout({
         <Navbar />
         <div id="container">
           <Menu />
-          <main>{children}</main>
+          <main>
+            <CharacterContext>
+              {children}
+            </CharacterContext>
+          </main>
         </div>
       </body>
     </html>

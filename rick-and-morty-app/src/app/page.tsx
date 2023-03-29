@@ -3,13 +3,16 @@
 import styles from "./page.module.css";
 import { Card } from "@/components/card/Card";
 import { getData } from "@/utils/getData";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { apiResponse } from "@/interfaces/apiResponse";
+import { characterContext } from "@/contexts/characterContext";
 
 export default function Home() {
   const [data, setData] = useState<apiResponse>({} as apiResponse);
   const [favorites, setFavorites] = useState(()=>new Set())
   
+  const {character, setCharacter} = useContext(characterContext)
+
   useEffect(() => {
     async function updateData() {
       const newData = await getData();
@@ -31,6 +34,7 @@ export default function Home() {
   function handleFavorite(id: number){
     if(!favorites.has(id)){
       setFavorites((prevFavorites)=>new Set(prevFavorites).add(id))
+      localStorage.setItem(id.toString(), "true")
     }else{
       setFavorites((prevFavorite)=>{
         const newFavorite = new Set(prevFavorite)
@@ -38,7 +42,8 @@ export default function Home() {
         newFavorite.delete(id)
 
         return newFavorite
-      })      
+      })
+      localStorage.removeItem(id.toString())      
     }
   }
   return (
@@ -47,9 +52,7 @@ export default function Home() {
         ? characterData.map((character) => (
             <Card
               key={character.id}
-              name={character.name}
-              imgUrl={""}
-              id={character.id}
+              character={character}
               handleFavorite={handleFavorite}
               favorite={favorites.has(character.id) ? true : false}
             />
