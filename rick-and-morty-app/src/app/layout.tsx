@@ -1,7 +1,9 @@
 import { Menu } from "@/components/menu/Menu";
 import { Navbar } from "@/components/navbar/Navbar";
 
+
 import "./globals.css";
+
 
 export const metadata = {
   title: "Rick and Morty Characters",

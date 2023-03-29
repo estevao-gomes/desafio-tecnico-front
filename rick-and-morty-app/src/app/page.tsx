@@ -8,7 +8,8 @@ import { apiResponse } from "@/interfaces/apiResponse";
 
 export default function Home() {
   const [data, setData] = useState<apiResponse>({} as apiResponse);
-
+  const [favorites, setFavorites] = useState(()=>new Set())
+  
   useEffect(() => {
     async function updateData() {
       const newData = await getData();
@@ -27,6 +28,19 @@ export default function Home() {
     }
   }
 
+  function handleFavorite(id: number){
+    if(!favorites.has(id)){
+      setFavorites((prevFavorites)=>new Set(prevFavorites).add(id))
+    }else{
+      setFavorites((prevFavorite)=>{
+        const newFavorite = new Set(prevFavorite)
+
+        newFavorite.delete(id)
+
+        return newFavorite
+      })      
+    }
+  }
   return (
     <div className={styles.main}>
       {characterData
@@ -36,6 +50,8 @@ export default function Home() {
               name={character.name}
               imgUrl={""}
               id={character.id}
+              handleFavorite={handleFavorite}
+              favorite={favorites.has(character.id) ? true : false}
             />
           ))
         : ""}
