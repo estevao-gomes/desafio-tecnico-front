@@ -1,11 +1,13 @@
-export async function getData(){
-    const res = await fetch("https://rickandmortyapi.com/api/character");
+import axios from "axios";
 
-    console.log(res.json())
-
-    if(res.ok!){
-        throw new Error('Failed to get server data')
+export async function getData() {
+    const res = await axios.get("http://rickandmortyapi.com/api/character");
+  
+    console.log(res.data);
+  
+    if (res.status!==200) {
+      throw new Error("Failed to get server data");
     }
-    
-    return res.json()
-}
+  
+    return res;
+  }

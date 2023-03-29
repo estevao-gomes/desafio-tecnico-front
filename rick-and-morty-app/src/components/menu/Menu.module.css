@@ -1,0 +1,9 @@
+.menu {
+    padding: 2rem;
+    border-width: 0;
+    border-right: 0.1rem;
+    border-style: solid;
+    border-color: black;
+
+    min-height: 100vh;
+  }
