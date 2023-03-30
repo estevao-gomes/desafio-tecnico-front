@@ -8,7 +8,6 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 
 import styles from "./Card.module.css";
 import { characterData } from "@/interfaces/characterData";
-import { characterContext } from "@/contexts/characterContext";
 
 interface cardProps {
   character: characterData;
@@ -17,15 +16,9 @@ interface cardProps {
 }
 
 export function Card({ character, favorite, handleFavorite }: cardProps) {
-  const { setCharacter } = useContext(characterContext);
   return (
     <div>
-      <Link
-        href={`/character/${character.id}`}
-        onClick={() => setCharacter(character)}
-      >
-        {character.name}
-      </Link>
+      <Link href={`/character/${character.id}`}>{character.name}</Link>
       <button
         className={favorite ? styles.favorite : ""}
         onClick={() => handleFavorite(character.id.toString())}

@@ -5,13 +5,10 @@ import { Card } from "@/components/card/Card";
 import { getData } from "@/utils/getData";
 import { useState, useEffect, useContext } from "react";
 import { apiResponse } from "@/interfaces/apiResponse";
-import { characterContext } from "@/contexts/characterContext";
 
 export default function Home() {
   const [data, setData] = useState<apiResponse>({} as apiResponse);
   const [favorites, setFavorites] = useState(() => new Set());
-
-  const { character, setCharacter } = useContext(characterContext);
 
   useEffect(() => {
     async function updateData() {
@@ -33,8 +30,6 @@ export default function Home() {
     });
   }, []);
 
-  // const storage = { ...localStorage };
-  // console.log(storage);
   const characterData = data ? data.results : [];
 
   async function handleNavegation(url: string | null) {
