@@ -20,8 +20,21 @@ export default function Home() {
     }
 
     updateData();
+
+    setFavorites(() => {
+      const newFavorites = new Set();
+      const storage = { ...localStorage };
+      for (const [key, value] of Object.entries(storage)) {
+        console.log(key);
+        newFavorites.add(key);
+      }
+
+      return newFavorites;
+    });
   }, []);
 
+  // const storage = { ...localStorage };
+  // console.log(storage);
   const characterData = data ? data.results : [];
 
   async function handleNavegation(url: string | null) {
@@ -31,10 +44,10 @@ export default function Home() {
     }
   }
 
-  function handleFavorite(id: number) {
+  function handleFavorite(id: string) {
     if (!favorites.has(id)) {
       setFavorites((prevFavorites) => new Set(prevFavorites).add(id));
-      localStorage.setItem(id.toString(), "true");
+      localStorage.setItem(id, "true");
     } else {
       setFavorites((prevFavorite) => {
         const newFavorite = new Set(prevFavorite);
@@ -43,7 +56,7 @@ export default function Home() {
 
         return newFavorite;
       });
-      localStorage.removeItem(id.toString());
+      localStorage.removeItem(id);
     }
   }
   return (
@@ -54,7 +67,7 @@ export default function Home() {
               key={character.id}
               character={character}
               handleFavorite={handleFavorite}
-              favorite={favorites.has(character.id) ? true : false}
+              favorite={favorites.has(character.id.toString()) ? true : false}
             />
           ))
         : ""}

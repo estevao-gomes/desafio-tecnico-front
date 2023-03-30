@@ -11,3 +11,4 @@ export async function getData(url:string = "https://rickandmortyapi.com/api/char
   
     return res.data as apiResponse; 
   }
+
