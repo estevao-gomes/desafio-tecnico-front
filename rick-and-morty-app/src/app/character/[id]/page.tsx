@@ -47,7 +47,7 @@ function SingleCharacterQuery({ params }: paramsProps) {
       : false;
 
     setFavorite(isFavorited);
-  }, [params.id]);
+  }, [params.id, data]);
 
   function handleClick() {
     if (favorite) {
