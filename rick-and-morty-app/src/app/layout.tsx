@@ -1,6 +1,7 @@
 import { Menu } from "@/components/menu/Menu";
 import { Navbar } from "@/components/navbar/Navbar";
-import { CharacterContextProvider } from "@/contexts/characterContext";
+import { FilterContext } from "@/contexts/filterContext";
+import { CharacterQuery } from "@/utils/getData";
 
 import "./globals.css";
 
@@ -18,12 +19,12 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navbar />
-        <div id="container">
-          <Menu />
-          <main>
-            <CharacterContextProvider>{children}</CharacterContextProvider>
-          </main>
-        </div>
+        <FilterContext>
+          <div id="container">
+            <Menu />
+              <main>{children}</main>
+          </div>
+        </FilterContext>
       </body>
     </html>
   );
