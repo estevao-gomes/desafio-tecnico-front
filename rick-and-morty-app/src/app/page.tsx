@@ -9,9 +9,9 @@ import { characterContext } from "@/contexts/characterContext";
 
 export default function Home() {
   const [data, setData] = useState<apiResponse>({} as apiResponse);
-  const [favorites, setFavorites] = useState(()=>new Set())
-  
-  const {character, setCharacter} = useContext(characterContext)
+  const [favorites, setFavorites] = useState(() => new Set());
+
+  const { character, setCharacter } = useContext(characterContext);
 
   useEffect(() => {
     async function updateData() {
@@ -24,26 +24,26 @@ export default function Home() {
 
   const characterData = data ? data.results : [];
 
-  async function handleNavegation(url: string|null) {
-    if(url){
+  async function handleNavegation(url: string | null) {
+    if (url) {
       const newData = await getData(url);
       setData(newData);
     }
   }
 
-  function handleFavorite(id: number){
-    if(!favorites.has(id)){
-      setFavorites((prevFavorites)=>new Set(prevFavorites).add(id))
-      localStorage.setItem(id.toString(), "true")
-    }else{
-      setFavorites((prevFavorite)=>{
-        const newFavorite = new Set(prevFavorite)
+  function handleFavorite(id: number) {
+    if (!favorites.has(id)) {
+      setFavorites((prevFavorites) => new Set(prevFavorites).add(id));
+      localStorage.setItem(id.toString(), "true");
+    } else {
+      setFavorites((prevFavorite) => {
+        const newFavorite = new Set(prevFavorite);
 
-        newFavorite.delete(id)
+        newFavorite.delete(id);
 
-        return newFavorite
-      })
-      localStorage.removeItem(id.toString())      
+        return newFavorite;
+      });
+      localStorage.removeItem(id.toString());
     }
   }
   return (
@@ -59,8 +59,8 @@ export default function Home() {
           ))
         : ""}
       <div>
-        <button onClick={()=>handleNavegation(data?.info.prev)}> prev</button>
-        <button onClick={()=>handleNavegation(data?.info.next)}>next</button>
+        <button onClick={() => handleNavegation(data?.info.prev)}> prev</button>
+        <button onClick={() => handleNavegation(data?.info.next)}>next</button>
       </div>
     </div>
   );

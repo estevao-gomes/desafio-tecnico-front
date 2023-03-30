@@ -1,10 +1,8 @@
 import { Menu } from "@/components/menu/Menu";
 import { Navbar } from "@/components/navbar/Navbar";
-import { CharacterContext } from "@/contexts/characterContext";
-
+import { CharacterContextProvider } from "@/contexts/characterContext";
 
 import "./globals.css";
-
 
 export const metadata = {
   title: "Rick and Morty Characters",
@@ -23,9 +21,7 @@ export default function RootLayout({
         <div id="container">
           <Menu />
           <main>
-            <CharacterContext>
-              {children}
-            </CharacterContext>
+            <CharacterContextProvider>{children}</CharacterContextProvider>
           </main>
         </div>
       </body>
