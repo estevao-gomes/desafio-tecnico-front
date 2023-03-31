@@ -1,7 +1,43 @@
-.favorite{
+.favoriteButton{
     color:red;
+    background-color: white;
+    
+    cursor: pointer;
+
+    border:none;
+    border-radius: 5px;
 }
+.favoriteButton:hover{
+    background-color: rgba(40, 195, 180, 70%);
+    color: white;
+}
+
+
 .card{
     display: flex;
     flex-direction: column;
+}
+.avatar{
+    border-radius: 20px;
+}
+.cardData{
+    width: 200px;
+
+    margin-top: -1rem;
+
+    text-align: center;
+
+    padding-block: 0.25rem;
+    border-radius: 10px;
+
+    background-color: rgb(246, 249, 248);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.cardData>a{
+    margin-inline: 0.2rem;
+    font-weight: bold;
+}
+
+.cardData>a:hover{
+    text-decoration: underline;
 }

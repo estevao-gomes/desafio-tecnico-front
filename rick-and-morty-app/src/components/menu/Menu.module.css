@@ -1,14 +1,90 @@
 .menu {
-    padding: 2rem;
-    border-width: 0;
-    border-right: 0.1rem;
-    border-style: solid;
-    border-color: black;
-
-    min-height: 100vh;
+    /* padding: 2rem; */
+    margin-top: 5px;
 
     display:flex;
   }
 .menuHidden{
   display:none;
+}
+.openButton{
+  border: none;
+  border-style: solid;
+  border-color: white;
+  border-radius: 10px;
+  background-color: rgba(40, 195, 180, 10%);
+
+  cursor: pointer;
+
+  color: white;
+  font-weight: bold;
+  padding-inline: 0.8rem;
+}
+.openButton:hover{
+  background-color: rgba(40, 195, 180, 90%);
+}
+
+.form{
+  border: none;
+  border-radius: 5px;
+
+  background-color: rgb(228, 238, 238);
+
+  margin-right: 0.5rem;
+  padding: 0.3rem;
+
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.input{
+  border: none;
+  margin: 0.2rem;
+  margin-top: 0.5rem;
+}
+
+.title{
+  background-color: rgba(87,171,176, 100%);
+  color: white;
+
+  border-radius: 5px;
+  padding: 0.1rem;
+  margin: 0.2rem;
+  margin-bottom: 2rem;
+}
+
+.label{
+  background-color: rgba(87,171,176, 50%);
+  color: white;
+
+  font-weight: bold;
+
+  border-radius: 5px;
+  padding: 0.2rem;
+  margin: 0.2rem;
+
+}
+
+.submitButton{
+  display: block;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5rem;
+
+  border:2px;
+  border-style: solid;
+  border-color: white;
+  border-radius: 5px;
+
+  font-weight: bold;
+  color: white;
+
+  background-color: rgba(87, 171, 176, 100%);
+
+  cursor: pointer;
+}
+
+.submitButton:hover{
+  border-color: rgba(87, 171, 176, 100%);
+  background-color: rgba(87, 171, 176, 70%);
 }

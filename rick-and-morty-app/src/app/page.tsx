@@ -78,7 +78,7 @@ function HomeComponent() {
   }
 
   return (
-    <div className={styles.main}>
+    <div className={styles.mainContainer}>
       <div className={styles.cardContainer}>
         {characterData
           ? characterData.map((character) => (
@@ -91,9 +91,13 @@ function HomeComponent() {
             ))
           : ""}
       </div>
-      <div>
-        <button onClick={() => handleNavegation(data?.info.prev)}> prev</button>
-        <button onClick={() => handleNavegation(data?.info.next)}>next</button>
+      <div className={styles.navegationContainer}>
+        <button onClick={() => handleNavegation(data?.info.prev)}>
+          Anterior
+        </button>
+        <button onClick={() => handleNavegation(data?.info.next)}>
+          Proxima
+        </button>
       </div>
     </div>
   );

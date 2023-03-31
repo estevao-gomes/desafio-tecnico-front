@@ -5,6 +5,7 @@ import { useContext } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./Card.module.css";
 import { characterData } from "@/interfaces/characterData";
@@ -20,19 +21,20 @@ export function Card({ character, favorite, handleFavorite }: cardProps) {
     <div className={styles.card}>
       <Link href={`/character/${character.id}`}>
         <Image
+          className={styles.avatar}
           alt={`${character.name} image`}
           src={character.image}
-          width={300}
-          height={300}
+          width={200}
+          height={200}
         />
       </Link>
-      <span>
+      <span className={styles.cardData}>
         <Link href={`/character/${character.id}`}>{character.name}</Link>
         <button
-          className={favorite ? styles.favorite : ""}
+          className={styles.favoriteButton}
           onClick={() => handleFavorite(character.id.toString())}
         >
-          <FontAwesomeIcon icon={faHeart} />
+          <FontAwesomeIcon icon={favorite ? solidHeart : faHeart} />
         </button>
       </span>
     </div>

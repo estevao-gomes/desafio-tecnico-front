@@ -1,7 +1,28 @@
 .Navbar {
-    border-style: solid;
+    height: 2.5%;
+    border-style: none;
     border-width: 0.1rem;
-    border-color: blue;
+    border-radius: 10px;
 
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);;
+
+    background-color: #57abb0;
+
+    padding: 1rem;
+
+    color: white;
     text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: larger;
+    text-align: start;
+
+}
+
+@media only screen and (max-width: 600px) {
+    .Navbar{
+        height: 8%;
+        font-size: medium;
+        padding: 0.3rem;
+    }
 }
