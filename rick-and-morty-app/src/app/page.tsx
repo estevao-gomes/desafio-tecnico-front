@@ -10,36 +10,36 @@ import { filterContext } from "@/contexts/filterContext";
 
 import styles from "./page.module.css";
 
-export default function Home(){
+export default function Home() {
   return (
     <CharacterQuery>
       <HomeComponent />
     </CharacterQuery>
-  )
+  );
 }
 
 function HomeComponent() {
   const [data, setData] = useState<apiResponse>({} as apiResponse);
   const [favorites, setFavorites] = useState(() => new Set());
 
-  const {filter} = useContext(filterContext)
+  const { filter } = useContext(filterContext);
 
-  const queryData = useGetCharacters(filter)
+  const queryData = useGetCharacters(filter);
 
   useEffect(() => {
     async function updateData() {
       //This codes asserts that type of response from api is not unknown or undefined
-      if(queryData.data || typeof queryData.data !== 'undefined'){
+      if (queryData.data || typeof queryData.data !== "undefined") {
         setData(queryData.data);
-      }  
+      }
     }
 
-    try{
+    try {
       updateData();
-    }catch(error){
-      throw new Error()
+    } catch (error) {
+      throw new Error();
     }
-    
+
     setFavorites(() => {
       const newFavorites = new Set();
       const storage = { ...localStorage };
@@ -78,7 +78,8 @@ function HomeComponent() {
   }
 
   return (
-      <div className={styles.main}>
+    <div className={styles.main}>
+      <div className={styles.cardContainer}>
         {characterData
           ? characterData.map((character) => (
               <Card
@@ -89,10 +90,11 @@ function HomeComponent() {
               />
             ))
           : ""}
-        <div>
-          <button onClick={() => handleNavegation(data?.info.prev)}> prev</button>
-          <button onClick={() => handleNavegation(data?.info.next)}>next</button>
-        </div>
       </div>
+      <div>
+        <button onClick={() => handleNavegation(data?.info.prev)}> prev</button>
+        <button onClick={() => handleNavegation(data?.info.next)}>next</button>
+      </div>
+    </div>
   );
 }

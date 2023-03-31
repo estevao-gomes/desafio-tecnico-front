@@ -22,7 +22,7 @@ export default function RootLayout({
         <FilterContext>
           <div id="container">
             <Menu />
-              <main>{children}</main>
+            <main>{children}</main>
           </div>
         </FilterContext>
       </body>

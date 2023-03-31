@@ -1,3 +1,7 @@
 .favorite{
     color:red;
 }
+.card{
+    display: flex;
+    flex-direction: column;
+}
