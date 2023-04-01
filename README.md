@@ -3,10 +3,10 @@ Este projeto foi criado com Next.js 13 e TypeScript e consome a API do Rick and 
 
 <ol>
 <h2>Funcionalidades</h2>
-<li>Tela de listagem de personagens com busca</li>
-<li>Tela de detalhes que contém a maior quantidade possível de informações e uma opção para favoritar o personagem</li>
+<li>Tela de listagem de personagens</li>
+<li>Tela de detalhes informações e uma opção para favoritar o personagem</li>
 <li>Paginação</li>
-<li>Filtros</li>
+<li>Filtros de nome, gênero, status, e favoritos</li>
 <li>Opção para favoritar o personagem na página de listagem e detalhes</li>
 <li>Layout responsivo</li>
 </ol>
