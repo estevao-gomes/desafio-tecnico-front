@@ -1,10 +1,14 @@
 .menu {
-    /* padding: 2rem; */
-    margin-top: 5px;
-    margin-left: 5px;
+  /* padding: 2rem; */
+  margin-top: 5px;
+  margin-left: 5px;
 
-    display:flex;
-  }
+  display:flex;
+
+}
+.menuNoButton{
+ overflow-y: auto ;
+}
 .menuHidden{
   display:none;
 }
