@@ -78,7 +78,7 @@ export async function getData(filter?: filterType) {
   const res = await axios.get(queryUrl)
 
   if (res.status === 404) {
-    throw new Error("No results found")
+    throw new Error("Nenhum resultado encontrado")
   } else if (res.status !== 200) {
     throw new Error("Failed to get server data")
   }

@@ -1,6 +1,8 @@
 "use client"
 
 import { useState, useEffect, useContext } from "react"
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import { Card } from "@/components/card/Card"
 import { useGetCharacters, CharacterQuery } from "@/utils/getData"
@@ -21,7 +23,7 @@ function HomeComponent() {
   const [favorites, setFavorites] = useState(() => new Set())
   const [page, setPage] = useState(1)
 
-  const { filter, favOnly } = useContext(filterContext)
+  const { filter, favOnly, handleResetFilter } = useContext(filterContext)
 
   //Altera quando o filtro muda e chama useEffect
   const { data, isLoading } = useGetCharacters({
@@ -62,7 +64,7 @@ function HomeComponent() {
   return (
     <div className={styles.mainContainer}>
       {isLoading ? (
-        <h1>Loading</h1>
+        <h1>Carregando...</h1>
       ) : data ? (
         <>
           <div className={styles.cardContainer}>
@@ -94,6 +96,7 @@ function HomeComponent() {
           <div className={styles.navegationContainer}>
             {/* Checa se não está na primeira ou ultima página antes de chamar função para trocar de pagina */}
             <button
+              aria-label="Previous Page"
               onClick={
                 data.info.prev && (() => setPage((prevPage) => prevPage - 1))
               }
@@ -101,6 +104,7 @@ function HomeComponent() {
               Anterior
             </button>
             <button
+              aria-label="Next Page"
               onClick={
                 data.info.next && (() => setPage((prevPage) => prevPage + 1))
               }
@@ -110,7 +114,16 @@ function HomeComponent() {
           </div>
         </>
       ) : (
-        <h1>No results found</h1>
+        <>
+          <h1>Nenhum resultado encontrado</h1>
+          <button
+            className={styles.backButton}
+            onClick={handleResetFilter}
+            aria-label="Back"
+          >
+            Voltar <FontAwesomeIcon icon={faArrowLeft} />
+          </button>
+        </>
       )}
     </div>
   )
