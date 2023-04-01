@@ -9,6 +9,7 @@ import { ReactNode } from "react";
 
 export const queryClient = new QueryClient();
 
+//obtem dado da APi utilizando filtros, pela função "getData"
 export const useGetCharacters = (filters: { name?: string; id?: string }) => {
   return useQuery({
     queryKey: ["data", filters],
@@ -19,6 +20,7 @@ export const useGetCharacters = (filters: { name?: string; id?: string }) => {
   });
 };
 
+//Retorna componente para query
 export function CharacterQuery({ children }: { children: ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
@@ -29,7 +31,7 @@ export async function getData(
   filter?: { name?: string; id?: string },
   url: string = "https://rickandmortyapi.com/api/character"
 ) {
-  //Checks if url is for main page or if it is for next/previous page
+  //Checa se a url é para a pagina inicial, ou uma pagina subsequente, pois se for para pagina subsequente o /? no filtro joga para a incial
   const res =
     url === "https://rickandmortyapi.com/api/character"
       ? filter?.id
@@ -44,6 +46,5 @@ export async function getData(
   } else if (res.status !== 200) {
     throw new Error("Failed to get server data");
   }
-  // console.log(res.data);
   return res.data;
 }

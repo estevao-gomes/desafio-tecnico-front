@@ -4,7 +4,6 @@ import { useState, useEffect, useContext } from "react";
 
 import { Card } from "@/components/card/Card";
 import { getData, useGetCharacters, CharacterQuery } from "@/utils/getData";
-
 import { apiResponse } from "@/interfaces/apiResponse";
 import { filterContext } from "@/contexts/filterContext";
 
@@ -24,11 +23,12 @@ function HomeComponent() {
 
   const { filter } = useContext(filterContext);
 
+  //Altera quando o filtro muda e chama useEffect
   const queryData = useGetCharacters(filter);
 
   useEffect(() => {
     async function updateData() {
-      //This codes asserts that type of response from api is not unknown or undefined
+      //Garante que os dados da API não estão vazios ou indefinidos
       if (queryData.data || typeof queryData.data !== "undefined") {
         setData(queryData.data);
       }
@@ -40,6 +40,7 @@ function HomeComponent() {
       throw new Error();
     }
 
+    //Obtem lista de favoritos do localStorage para sincronizar com pagina de personagens
     setFavorites(() => {
       const newFavorites = new Set();
       const storage = { ...localStorage };
@@ -51,17 +52,18 @@ function HomeComponent() {
     });
   }, [queryData.data]);
 
+  //inicializa lista de personagens como vazia caso seja primeira renderização
   const characterData = data ? data.results : [];
 
+  //Navega para url da próx. ou ant. pagina
   async function handleNavegation(url: string | null) {
     if (url) {
       const newData = await getData({}, url);
-      console.log(newData);
       setData(newData);
     }
   }
 
-  //remover, usar Link com link (hehe)
+  //Seta favorito no localStorage e no state.
   function handleFavorite(id: string) {
     if (!favorites.has(id)) {
       setFavorites((prevFavorites) => new Set(prevFavorites).add(id));

@@ -1,23 +1,24 @@
 "use client";
 import { useEffect, useState } from "react";
 
+import Link from "next/link";
+import Image from "next/image";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 import { CharacterQuery, useGetCharacters } from "@/utils/getData";
 import { characterData } from "@/interfaces/characterData";
-
-import styles from "./page.module.css";
-import Link from "next/link";
-import Image from "next/image";
 import { FavoriteButton } from "@/components/favoriteButton/FavoriteButton";
 
+import styles from "./page.module.css";
 interface paramsProps {
   params: {
     id: number;
   };
 }
 
+// Retorna a página usando o componente do react-query
 export default function Page({ params }: paramsProps) {
   return (
     <CharacterQuery>
@@ -26,6 +27,7 @@ export default function Page({ params }: paramsProps) {
   );
 }
 
+//Página principal (personagem único)
 function SingleCharacterQuery({ params }: paramsProps) {
   const [characterData, setCharacterData] = useState({} as characterData);
 
@@ -35,15 +37,16 @@ function SingleCharacterQuery({ params }: paramsProps) {
 
   //Adicionar error boundary
   useEffect(() => {
+    //Obtem dados dos personagens na inicialização
     async function getCharacterData() {
       if (data || typeof data !== "undefined") {
-        console.log(data);
         setCharacterData(data);
       }
     }
 
     getCharacterData();
 
+    // Verifica se o personagem está em localStorage como favorito
     const isFavorited = localStorage.getItem(params.id.toString())
       ? true
       : false;
@@ -51,6 +54,7 @@ function SingleCharacterQuery({ params }: paramsProps) {
     setFavorite(isFavorited);
   }, [params.id, data]);
 
+  //Adiciona ou remove personagem dos favoritos no clique
   function handleClick() {
     if (favorite) {
       localStorage.removeItem(params.id.toString());

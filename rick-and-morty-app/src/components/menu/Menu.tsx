@@ -15,8 +15,10 @@ export function Menu() {
     name: "",
   });
 
+  //Obtem função para alterar filtro
   const { setFilter } = useContext(filterContext);
 
+  //Mostra menu ao clique
   function handleClick() {
     setShowMenu((showMenu) => !showMenu);
   }
@@ -44,11 +46,16 @@ export function Menu() {
             aria-label="Nome"
             placeholder="Nome"
           />
-          <button className={styles.submitButton} type="submit">
+          <button
+            aria-label="Filtrar"
+            className={styles.submitButton}
+            type="submit"
+          >
             Filtrar
           </button>
         </form>
       </div>
+      {/* Altera direção da seta para menu aberto/fechado */}
       <button className={styles.openButton} onClick={handleClick}>
         {showMenu ? (
           <FontAwesomeIcon icon={faCaretRight} />

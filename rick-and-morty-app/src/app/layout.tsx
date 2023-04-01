@@ -1,7 +1,6 @@
 import { Menu } from "@/components/menu/Menu";
 import { Navbar } from "@/components/navbar/Navbar";
 import { FilterContext } from "@/contexts/filterContext";
-import { CharacterQuery } from "@/utils/getData";
 
 import "./globals.css";
 
