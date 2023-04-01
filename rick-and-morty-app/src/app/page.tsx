@@ -56,6 +56,7 @@ function HomeComponent() {
   async function handleNavegation(url: string | null) {
     if (url) {
       const newData = await getData({}, url);
+      console.log(newData);
       setData(newData);
     }
   }

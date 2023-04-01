@@ -1,21 +1,18 @@
-.favoriteButton{
-    color:red;
-    background-color: white;
-    
-    cursor: pointer;
-
-    border:none;
-    border-radius: 5px;
-}
-.favoriteButton:hover{
-    background-color: rgba(40, 195, 180, 70%);
-    color: white;
-}
-
-
 .card{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+
+    background-color: rgb(228, 238, 238);
+
+    padding: 1rem;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 .avatar{
     border-radius: 20px;

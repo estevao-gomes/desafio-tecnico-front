@@ -1,0 +1,13 @@
+.favoriteButton{
+    color:red;
+    background-color: white;
+    
+    cursor: pointer;
+
+    border:none;
+    border-radius: 5px;
+}
+.favoriteButton:hover{
+    background-color: rgba(40, 195, 180, 70%);
+    color: white;
+}

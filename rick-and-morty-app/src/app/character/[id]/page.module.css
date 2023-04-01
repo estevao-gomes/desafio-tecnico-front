@@ -1,7 +1,63 @@
-.favorite{
-    color:red;
-}
 .container{
     display: flex;
     flex-direction: column;
+
+    height: 95%;
+
+    background-color: rgb(228, 238, 238);
+
+    margin: 1rem;
+    padding-left: 1.5rem;
+
+    border-radius: 15px;
+}
+.container>a{
+    display: inline;
+    width: fit-content;
+
+    padding-block: 0.2rem;
+    padding-inline: 0.5rem;
+    margin-block: 1rem;
+
+    border:2px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 5px;
+
+    font-weight: bold;
+    color: white;
+
+    background-color: rgba(87, 171, 176, 100%);
+
+    cursor: pointer;
+}
+.container>a:hover{
+    border-color: rgba(87, 171, 176, 100%);
+    background-color: rgba(87, 171, 176, 70%);
+}
+.container>h2{
+    margin-block: 0.5rem;
+}
+
+.name{
+    display: flex;
+    align-items: center;
+
+    padding-inline: 0.5rem;
+    margin-top: 0.3rem;
+
+    color: white;
+
+    width: fit-content;
+    height: fit-content;
+
+    background-color: rgba(87, 171, 176, 70%);
+
+    border-radius: 10px;
+}
+.name>button{
+    height: fit-content;
+
+    padding: 0.5rem;
+    margin-left: 0.3rem;
 }

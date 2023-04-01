@@ -2,18 +2,15 @@
 import { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  CharacterQuery,
-  getSingleData,
-  useGetCharacters,
-} from "@/utils/getData";
+import { CharacterQuery, useGetCharacters } from "@/utils/getData";
 import { characterData } from "@/interfaces/characterData";
 
 import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import { FavoriteButton } from "@/components/favoriteButton/FavoriteButton";
 
 interface paramsProps {
   params: {
@@ -32,7 +29,7 @@ export default function Page({ params }: paramsProps) {
 function SingleCharacterQuery({ params }: paramsProps) {
   const [characterData, setCharacterData] = useState({} as characterData);
 
-  const [favorite, setFavorite] = useState<boolean>();
+  const [favorite, setFavorite] = useState<boolean>(false);
 
   const { data } = useGetCharacters({ id: params.id.toString() });
 
@@ -66,21 +63,18 @@ function SingleCharacterQuery({ params }: paramsProps) {
 
   return (
     <div className={styles.container}>
-      <Link href={"/"}>Back</Link>
+      <Link href={"/"} aria-label="Back">
+        <FontAwesomeIcon icon={faArrowLeft} />
+      </Link>
       <Image
         alt={`${characterData.name} image`}
         src={characterData.image}
         width={300}
         height={300}
       />
-      <span>
+      <span className={styles.name}>
         <h1>{characterData.name}</h1>
-        <button
-          className={favorite ? styles.favorite : ""}
-          onClick={handleClick}
-        >
-          <FontAwesomeIcon icon={faHeart} />
-        </button>
+        <FavoriteButton clickHandler={handleClick} favorite={favorite} />
       </span>
       <h2>
         Status: {characterData.status ? characterData.status : "Undefined"}

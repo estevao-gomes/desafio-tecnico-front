@@ -1,14 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { useContext } from "react";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
-import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
-
 import styles from "./Card.module.css";
 import { characterData } from "@/interfaces/characterData";
+import { FavoriteButton } from "../favoriteButton/FavoriteButton";
 
 interface cardProps {
   character: characterData;
@@ -30,12 +25,10 @@ export function Card({ character, favorite, handleFavorite }: cardProps) {
       </Link>
       <span className={styles.cardData}>
         <Link href={`/character/${character.id}`}>{character.name}</Link>
-        <button
-          className={styles.favoriteButton}
-          onClick={() => handleFavorite(character.id.toString())}
-        >
-          <FontAwesomeIcon icon={favorite ? solidHeart : faHeart} />
-        </button>
+        <FavoriteButton
+          favorite={favorite}
+          clickHandler={() => handleFavorite(character.id.toString())}
+        />
       </span>
     </div>
   );

@@ -1,13 +1,15 @@
 import axios from "axios";
 
-import { apiResponse } from "@/interfaces/apiResponse";
-import { characterData } from "@/interfaces/characterData";
-import { QueryClient, useQuery, QueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryClient,
+  useQuery,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 import { ReactNode } from "react";
 
 export const queryClient = new QueryClient();
 
-export const useGetCharacters = (filters: { name?: string, id?: string }) =>  {
+export const useGetCharacters = (filters: { name?: string; id?: string }) => {
   return useQuery({
     queryKey: ["data", filters],
     queryFn: async () => {
@@ -17,44 +19,31 @@ export const useGetCharacters = (filters: { name?: string, id?: string }) =>  {
   });
 };
 
-export function CharacterQuery({children}:{children:ReactNode}){
-  return(
-    <QueryClientProvider client={queryClient}>
-      {children}
-    </QueryClientProvider>
-  )
+export function CharacterQuery({ children }: { children: ReactNode }) {
+  return (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
 }
 
 export async function getData(
-  filter?: { name?: string, id?: string },
+  filter?: { name?: string; id?: string },
   url: string = "https://rickandmortyapi.com/api/character"
 ) {
-  const res = filter?.id ? 
-  await axios.get(
-    `${url}/${filter.id}`
-  ) :
-  await axios.get(
-    `${url}/?${filter?.name ? `name=${filter.name}` : ""}`
-  );
+  //Checks if url is for main page or if it is for next/previous page
+  const res =
+    url === "https://rickandmortyapi.com/api/character"
+      ? filter?.id
+        ? await axios.get(`${url}/${filter.id}`)
+        : await axios.get(
+            `${url}/?${filter?.name ? `name=${filter.name}` : ""}`
+          )
+      : await axios.get(`${url}&${filter?.name ? `name=${filter.name}` : ""}`);
 
   if (res.status === 404) {
-    throw new Error("No results found")
-  }else if(res.status !== 200){
-    throw new Error("Failed to get server data")
-  }
-  console.log(res.data)
-  return res.data;
-}
-
-//To get data for single character. Can not use getData due to typing (could be fixed, but, due to time constraints, defining new function is easier)
-export async function getSingleData(id: string) {
-  const res = await axios.get(
-    `https://rickandmortyapi.com/api/character/${id}`
-  );
-
-  if (res.status !== 200) {
+    throw new Error("No results found");
+  } else if (res.status !== 200) {
     throw new Error("Failed to get server data");
   }
-
-  return res.data as characterData;
+  // console.log(res.data);
+  return res.data;
 }
