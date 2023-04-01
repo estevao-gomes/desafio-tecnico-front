@@ -75,7 +75,6 @@ export async function getData(filter?: filterType) {
         genderChecked ? `&gender=${genderChecked}` : ""
       }`
 
-  console.log(genderChecked, queryUrl)
   const res = await axios.get(queryUrl)
 
   if (res.status === 404) {
