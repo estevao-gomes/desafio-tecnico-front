@@ -77,7 +77,7 @@ export function Menu() {
             aria-label="Nome"
             placeholder="Nome"
           />
-          <fieldset>
+          <fieldset className={styles.checkFilter}>
             <legend>Status</legend>
             <label htmlFor="status-option1">
               Alive
@@ -110,7 +110,7 @@ export function Menu() {
               />
             </label>
           </fieldset>
-          <fieldset>
+          <fieldset className={styles.checkFilter}>
             <legend>Gender</legend>
             <label htmlFor="gender-option1">
               Male
@@ -119,16 +119,6 @@ export function Menu() {
                 id="gender-option1"
                 name="male"
                 checked={formValues.gender.male}
-                onChange={handleCheckboxChange}
-              />
-            </label>
-            <label htmlFor="gender-option2">
-              Female
-              <input
-                type="checkbox"
-                id="gender-option2"
-                name="female"
-                checked={formValues.gender.female}
                 onChange={handleCheckboxChange}
               />
             </label>
@@ -142,8 +132,18 @@ export function Menu() {
                 onChange={handleCheckboxChange}
               />
             </label>
+            <label htmlFor="gender-option2">
+              Female
+              <input
+                type="checkbox"
+                id="gender-option2"
+                name="female"
+                checked={formValues.gender.female}
+                onChange={handleCheckboxChange}
+              />
+            </label>
             <label htmlFor="gender-option4">
-              Genderless
+              Unknown
               <input
                 type="checkbox"
                 id="gender-option4"
