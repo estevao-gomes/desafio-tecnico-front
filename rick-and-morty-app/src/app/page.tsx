@@ -24,7 +24,7 @@ function HomeComponent() {
   const { filter } = useContext(filterContext);
 
   //Altera quando o filtro muda e chama useEffect
-  const { data, isLoading, refetch } = useGetCharacters({
+  const { data, isLoading } = useGetCharacters({
     ...filter,
     page: page,
   });
@@ -76,6 +76,7 @@ function HomeComponent() {
             ))}
           </div>
           <div className={styles.navegationContainer}>
+            {/* Checa se não está na primeira ou ultima página antes de chamar função para trocar de pagina */}
             <button
               onClick={
                 data.info.prev && (() => setPage((prevPage) => prevPage - 1))
