@@ -3,6 +3,9 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  // env: {
+  //   API_URL: "https://rickandmortyapi.com/api/character",
+  // },
   images: {
     remotePatterns: [
       {
@@ -11,6 +14,6 @@ const nextConfig = {
       },
     ],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

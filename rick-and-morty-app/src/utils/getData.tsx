@@ -45,7 +45,7 @@ export function CharacterQuery({ children }: { children: ReactNode }) {
 }
 
 export async function getData(filter?: filterType) {
-  const url = "https://rickandmortyapi.com/api/character"
+  const url = process.env.NEXT_PUBLIC_API_URL
 
   //Checa se foi filtrado algum status ou gênero. Poderia ser criada uma lógica iterativa, porém para fins de simplicidade, como são apenas 3 ou 4 opções, esta maneira fica mais fácil.
   const statusChecked = filter?.status?.alive
