@@ -25,6 +25,7 @@
 }
 
 .form{
+  width: fit-content;
   border: none;
   border-radius: 5px;
 
@@ -87,4 +88,28 @@
 .submitButton:hover{
   border-color: rgba(87, 171, 176, 100%);
   background-color: rgba(87, 171, 176, 70%);
+}
+
+.checkFilter{
+  display: grid;
+  grid-template-columns: fit-content(2, minmax(0, 1fr));
+
+
+  border-color: rgba(87, 171, 176, 100%);
+  border-radius: 10px;
+
+  margin-block: 1rem;
+}
+.checkFilter>legend{
+  background-color: rgba(87,171,176, 50%);
+  color: white;
+
+  font-weight: bold;
+
+  border-radius: 5px;
+  padding: 0.3rem;
+}
+.checkFilter>label{
+  display: flex;
+  font-weight: 500;
 }

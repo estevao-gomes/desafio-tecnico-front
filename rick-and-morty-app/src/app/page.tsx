@@ -3,11 +3,11 @@
 import { useState, useEffect, useContext } from "react";
 
 import { Card } from "@/components/card/Card";
-import { getData, useGetCharacters, CharacterQuery } from "@/utils/getData";
-import { apiResponse } from "@/interfaces/apiResponse";
+import { useGetCharacters, CharacterQuery } from "@/utils/getData";
 import { filterContext } from "@/contexts/filterContext";
 
 import styles from "./page.module.css";
+import { characterData } from "@/interfaces/characterData";
 
 export default function Home() {
   return (
@@ -18,28 +18,18 @@ export default function Home() {
 }
 
 function HomeComponent() {
-  const [data, setData] = useState<apiResponse>({} as apiResponse);
   const [favorites, setFavorites] = useState(() => new Set());
+  const [page, setPage] = useState(1);
 
   const { filter } = useContext(filterContext);
 
   //Altera quando o filtro muda e chama useEffect
-  const queryData = useGetCharacters(filter);
+  const { data, isLoading } = useGetCharacters({
+    ...filter,
+    page: page,
+  });
 
   useEffect(() => {
-    async function updateData() {
-      //Garante que os dados da API não estão vazios ou indefinidos
-      if (queryData.data || typeof queryData.data !== "undefined") {
-        setData(queryData.data);
-      }
-    }
-
-    try {
-      updateData();
-    } catch (error) {
-      throw new Error();
-    }
-
     //Obtem lista de favoritos do localStorage para sincronizar com pagina de personagens
     setFavorites(() => {
       const newFavorites = new Set();
@@ -50,18 +40,7 @@ function HomeComponent() {
 
       return newFavorites;
     });
-  }, [queryData.data]);
-
-  //inicializa lista de personagens como vazia caso seja primeira renderização
-  const characterData = data ? data.results : [];
-
-  //Navega para url da próx. ou ant. pagina
-  async function handleNavegation(url: string | null) {
-    if (url) {
-      const newData = await getData({}, url);
-      setData(newData);
-    }
-  }
+  }, []);
 
   //Seta favorito no localStorage e no state.
   function handleFavorite(id: string) {
@@ -82,26 +61,41 @@ function HomeComponent() {
 
   return (
     <div className={styles.mainContainer}>
-      <div className={styles.cardContainer}>
-        {characterData
-          ? characterData.map((character) => (
+      {isLoading ? (
+        <h1>Loading</h1>
+      ) : data ? (
+        <>
+          <div className={styles.cardContainer}>
+            {data.results.map((character: characterData) => (
               <Card
                 key={character.id}
                 character={character}
                 handleFavorite={handleFavorite}
                 favorite={favorites.has(character.id.toString()) ? true : false}
               />
-            ))
-          : ""}
-      </div>
-      <div className={styles.navegationContainer}>
-        <button onClick={() => handleNavegation(data?.info.prev)}>
-          Anterior
-        </button>
-        <button onClick={() => handleNavegation(data?.info.next)}>
-          Proxima
-        </button>
-      </div>
+            ))}
+          </div>
+          <div className={styles.navegationContainer}>
+            {/* Checa se não está na primeira ou ultima página antes de chamar função para trocar de pagina */}
+            <button
+              onClick={
+                data.info.prev && (() => setPage((prevPage) => prevPage - 1))
+              }
+            >
+              Anterior
+            </button>
+            <button
+              onClick={
+                data.info.next && (() => setPage((prevPage) => prevPage + 1))
+              }
+            >
+              Proxima
+            </button>
+          </div>
+        </>
+      ) : (
+        <h1>No results found</h1>
+      )}
     </div>
   );
 }
