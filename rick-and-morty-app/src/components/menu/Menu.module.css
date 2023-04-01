@@ -1,6 +1,7 @@
 .menu {
     /* padding: 2rem; */
     margin-top: 5px;
+    margin-left: 5px;
 
     display:flex;
   }
@@ -113,3 +114,19 @@
   display: flex;
   font-weight: 500;
 }
+
+.options{
+  width: 90%;
+  border: none;
+  border-radius: 5px;
+
+  background-color: rgb(228, 238, 238);
+
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.3rem;
+  padding-bottom: 1rem;
+
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
