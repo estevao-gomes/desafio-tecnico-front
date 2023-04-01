@@ -15,6 +15,9 @@ const roboto = Roboto({
 export const metadata = {
   title: "Rick and Morty Characters",
   description: "Rick and Morty interactive characters list",
+  icons: {
+    icon: "/favicon.png",
+  },
 }
 
 export default function RootLayout({
