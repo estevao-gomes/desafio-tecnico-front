@@ -12,6 +12,8 @@ Este é um catálogo de todos os personagens do show Ricky and Morty, com divers
 
 Este projeto foi criado com Next.js 13 e TypeScript e consome a API do Rick and Morty (https://rickandmortyapi.com/documentation/).
 
+para ver uma demonstração, visite o link <a href="https://desafio-tecnico-front.vercel.app/" />
+
 <ol>
 <h2>Funcionalidades</h2>
 <li>Tela de listagem de personagens</li>
