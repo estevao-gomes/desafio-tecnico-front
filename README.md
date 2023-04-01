@@ -1,4 +1,15 @@
 <h1>Rick and Morty Database - Catálogo de personagens</h1>
+Este é um catálogo de todos os personagens do show Ricky and Morty, com diversas funcionalidades e responsivo para ser visualizado em qualquer lugar.
+
+<div style="display: grid; grid-template-columns:repeat(2, minmax(0, 1fr))">
+  <h2>Web:<h2>
+  <img src="https://i.imgur.com/0BsT6DK.png" width="500"/>
+  <img src="https://i.imgur.com/yAHKDvU.png" width="500"/>
+  <h2>Mobile:</h2>
+  <img src="https://i.imgur.com/1H5Wj4T.png" width="300"/>
+  <img src="https://i.imgur.com/8GDd4pO.png" width="300"/>
+</div>
+
 Este projeto foi criado com Next.js 13 e TypeScript e consome a API do Rick and Morty (https://rickandmortyapi.com/documentation/).
 
 <ol>
