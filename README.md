@@ -1,13 +1,15 @@
 <h1>Rick and Morty Database - Catálogo de personagens</h1>
 Este projeto foi criado com Next.js 13 e TypeScript e consome a API do Rick and Morty (https://rickandmortyapi.com/documentation/).
 
+<ol>
 <h2>Funcionalidades</h2>
-Tela de listagem de personagens com busca
-Tela de detalhes que contém a maior quantidade possível de informações e uma opção para favoritar o personagem
-Paginação
-Filtros
-Opção para favoritar o personagem na página de listagem e detalhes
-Layout responsivo
+<li>Tela de listagem de personagens com busca</li>
+<li>Tela de detalhes que contém a maior quantidade possível de informações e uma opção para favoritar o personagem</li>
+<li>Paginação</li>
+<li>Filtros</li>
+<li>Opção para favoritar o personagem na página de listagem e detalhes</li>
+<li>Layout responsivo</li>
+</ol>
 
 
 <ul><h2>Tecnologias utilizadas</h2>
