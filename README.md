@@ -12,7 +12,7 @@ Layout responsivo
 
 <ul><h2>Tecnologias utilizadas</h2>
 <li><strong>React</strong> - Dispensa apresentações</li>
-<li><strong>Next.js 13</strong> - Última versão do Next.js, utilizando de todas as facilidades da nova pasta "app", assim como server e client components, assim como bibliotecas já integradas com Next, incluindo ESLint.</li>
+<li><strong>Next.js 13</strong> - Última versão do Next.js, utilizando de todas as facilidades da nova pasta "app", assim como server e client components, além de bibliotecas já integradas com Next, incluindo ESLint.</li>
 <li><strong>TypeScript</strong> - Superset de Javascript facilitando a manipulação de dados através da tipagem de variáveis</li>
 <li><strong>React-query</strong> - Biblioteca para facilitar a obtenção e query de dados de APIs</li>
 <li><strong>FontAwesome</strong> - biblioteca de ícones SVG </li>
