@@ -37,6 +37,31 @@
   margin-bottom: 2rem;
 }
 
+.backButton{
+  display: inline;
+  width: fit-content;
+
+  padding-block: 0.2rem;
+  padding-inline: 0.5rem;
+  margin-block: 1rem;
+
+  border:2px;
+  border-style: solid;
+  border-color: white;
+  border-radius: 5px;
+
+  font-weight: bold;
+  color: white;
+
+  background-color: rgba(87, 171, 176, 100%);
+
+  cursor: pointer;
+}
+.backButton:hover{
+  border-color: rgba(87, 171, 176, 100%);
+  background-color: rgba(87, 171, 176, 70%);
+}
+
 /* Altera Número de colunas por tamanho da tela */
 @media only screen and (max-width: 500px) {
   .cardContainer{

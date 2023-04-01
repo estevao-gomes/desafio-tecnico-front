@@ -9,6 +9,7 @@ interface filterContextType {
   setFilter: ({}) => void
   favOnly: boolean
   handleFavOnlyChange: () => void
+  handleResetFilter: () => void
 }
 export const filterContext = createContext<filterContextType>(
   {} as filterContextType
@@ -21,9 +22,19 @@ export function FilterContext({ children }: { children: ReactNode }) {
   function handleFavOnlyChange() {
     setFavOnly((oldFavOnly) => !oldFavOnly)
   }
+
+  function handleResetFilter() {
+    setFilter({})
+  }
   return (
     <filterContext.Provider
-      value={{ filter, setFilter, favOnly, handleFavOnlyChange }}
+      value={{
+        filter,
+        setFilter,
+        favOnly,
+        handleFavOnlyChange,
+        handleResetFilter,
+      }}
     >
       {children}
     </filterContext.Provider>
