@@ -30,8 +30,11 @@ export function Menu() {
     event.preventDefault()
 
     const isNameValid = !!formValues.name.trim() // Checa se há algo no input de nome
-    const isStatusValid = Object.values(formValues.status).some(Boolean) // Checa se foi selecionado ao menos um tipo
-    if (!isNameValid && !isStatusValid) {
+    // Checa se foi selecionado ao menos um tipo ou gênero
+    const isStatusValid = Object.values(formValues.status).some(Boolean)
+    const isGenderValid = Object.values(formValues.gender).some(Boolean)
+
+    if (!isNameValid && !isStatusValid && !isGenderValid) {
       //não realiza o filtro caso não haja nada selecionado
       return
     }
