@@ -43,7 +43,7 @@ export function Menu() {
     return
   }
 
-  function handleCheckboxChange(event: FormEvent) {
+  function handleStatusCheckboxChange(event: FormEvent) {
     const { name, checked } = event.target as HTMLInputElement
 
     //Garante que apenas uma das caixas será selecionada por vez, enquanto ajusta o valor da caixa cujo status foi alterado.
@@ -53,6 +53,20 @@ export function Menu() {
       status: {
         ...Object.fromEntries(
           Object.entries(prevState.status).map(([key, val]) => [[key], false])
+        ),
+        [name]: checked,
+      },
+    }))
+  }
+
+  function handleGenderCheckboxChange(event: FormEvent) {
+    const { name, checked } = event.target as HTMLInputElement
+
+    setFormValues((prevState) => ({
+      ...prevState,
+      gender: {
+        ...Object.fromEntries(
+          Object.entries(prevState.gender).map(([key, val]) => [[key], false])
         ),
         [name]: checked,
       },
@@ -86,7 +100,7 @@ export function Menu() {
                 id="status-option1"
                 name="alive"
                 checked={formValues.status.alive}
-                onChange={handleCheckboxChange}
+                onChange={handleStatusCheckboxChange}
               />
             </label>
             <label htmlFor="status-option2">
@@ -96,7 +110,7 @@ export function Menu() {
                 id="status-option2"
                 name="dead"
                 checked={formValues.status.dead}
-                onChange={handleCheckboxChange}
+                onChange={handleStatusCheckboxChange}
               />
             </label>
             <label htmlFor="status-option3">
@@ -106,7 +120,7 @@ export function Menu() {
                 id="status-option3"
                 name="unknown"
                 checked={formValues.status.unknown}
-                onChange={handleCheckboxChange}
+                onChange={handleStatusCheckboxChange}
               />
             </label>
           </fieldset>
@@ -119,7 +133,7 @@ export function Menu() {
                 id="gender-option1"
                 name="male"
                 checked={formValues.gender.male}
-                onChange={handleCheckboxChange}
+                onChange={handleGenderCheckboxChange}
               />
             </label>
             <label htmlFor="gender-option3">
@@ -129,7 +143,7 @@ export function Menu() {
                 id="gender-option3"
                 name="genderless"
                 checked={formValues.gender.genderless}
-                onChange={handleCheckboxChange}
+                onChange={handleGenderCheckboxChange}
               />
             </label>
             <label htmlFor="gender-option2">
@@ -139,7 +153,7 @@ export function Menu() {
                 id="gender-option2"
                 name="female"
                 checked={formValues.gender.female}
-                onChange={handleCheckboxChange}
+                onChange={handleGenderCheckboxChange}
               />
             </label>
             <label htmlFor="gender-option4">
@@ -149,7 +163,7 @@ export function Menu() {
                 id="gender-option4"
                 name="unknown"
                 checked={formValues.gender.unknown}
-                onChange={handleCheckboxChange}
+                onChange={handleGenderCheckboxChange}
               />
             </label>
           </fieldset>

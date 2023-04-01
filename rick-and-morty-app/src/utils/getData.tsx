@@ -70,15 +70,12 @@ export async function getData(filter?: filterType) {
   const queryUrl = filter?.id
     ? `${url}/${filter.id}`
     : `${url}/?page=${filter?.page}${
-        filter?.name
-          ? `&name=${filter.name}`
-          : statusChecked
-          ? `&status=${statusChecked}`
-          : genderChecked
-          ? `&gender=${genderChecked}`
-          : ""
+        filter?.name ? `&name=${filter.name}` : ""
+      }${statusChecked ? `&status=${statusChecked}` : ""}${
+        genderChecked ? `&gender=${genderChecked}` : ""
       }`
 
+  console.log(genderChecked, queryUrl)
   const res = await axios.get(queryUrl)
 
   if (res.status === 404) {
